@@ -31,20 +31,4 @@ struct BasicString<T> where T: BinaryInteger {
 	subscript(index: Int) -> T {
 		return self.array[index]
 	}
-	
-	static func += (lhs: inout BasicString<T>, rhs: BasicString<T>) {
-		lhs.array.reserveCapacity(lhs.capacity + rhs.capacity)
-		
-		for index in 0..<rhs.length {
-			lhs.array.append(rhs.array[index])
-		}
-		
-		lhs.length += rhs.length
-	}
-	
-	// TODO: findFirstIndexOf(character)
-	
-	// TODO: findFirstIndexOf(character sequence)
-	
-	//
 }

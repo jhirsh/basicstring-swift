@@ -42,4 +42,33 @@ final class BasicStringTests: XCTestCase {
 		XCTAssertEqual(string[3], 0xFFFF)
 		XCTAssertEqual(string[4], 0x0)
 	}
+	
+	func testFirstCharacter() {
+		var string: BasicString<Int> = BasicString<Int>(0xF, size: 128)
+		string += 0x0
+		
+		let firstZero = string.findFirstIndexOf(character: 0x0)
+		XCTAssertEqual(firstZero, 128)
+		
+		let firstSixteen = string.findFirstIndexOf(character: 0xF)
+		XCTAssertEqual(firstSixteen, 0)
+	}
+	
+	func testFirstSequence() {
+		var string: BasicString<Int> = BasicString<Int>(0xF, size: 4)
+		let fourOnes = BasicString<Int>(0x1, size: 4)
+		let twoTwos = BasicString<Int>(0x2, size: 2)
+		let fourOnesOne256 = fourOnes + 0xFF
+		
+		string += fourOnes + twoTwos + fourOnesOne256
+		
+		let firstSequence = string.findFirstIndexOf(sequence: twoTwos)
+		XCTAssertEqual(firstSequence, 8)
+		
+		let secondSequence = string.findFirstIndexOf(sequence: twoTwos + fourOnesOne256)
+		XCTAssertEqual(secondSequence, 8)
+		
+		let thirdSequence = string.findFirstIndexOf(sequence: fourOnesOne256)
+		XCTAssertEqual(thirdSequence, 10)
+	}
 }
