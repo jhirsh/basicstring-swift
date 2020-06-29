@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BasicString {
+extension BasicString: Equatable {
 	
 	static func + (lhs: BasicString<T>, rhs: BasicString<T>) -> BasicString<T>  {
 		var newString = BasicString<T>(lhs.capacity + rhs.capacity)
@@ -52,5 +52,19 @@ extension BasicString {
 	static func += (lhs: inout BasicString<T>, rhs: T) {
 		lhs.array.append(rhs)
 		lhs.length += 1
+	}
+	
+	static func == (lhs: BasicString<T>, rhs: BasicString<T>) -> Bool {
+		if lhs.length != rhs.length {
+			return false
+		}
+		
+		for index in 0..<lhs.length {
+			if lhs[index] != rhs[index] {
+				return false
+			}
+		}
+		
+		return true
 	}
 }

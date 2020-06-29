@@ -71,4 +71,19 @@ final class BasicStringTests: XCTestCase {
 		let thirdSequence = string.findFirstIndexOf(sequence: fourOnesOne256)
 		XCTAssertEqual(thirdSequence, 10)
 	}
+	
+	func testEqualsOperator() {
+		let string1: BasicString<Int> = BasicString<Int>(0xF, size:10)
+		var string2: BasicString<Int> = BasicString<Int>(0xF, size:9)
+		
+		XCTAssertNotEqual(string1, string2)
+		
+		string2 += 0xF
+		
+		XCTAssertEqual(string1, string2)
+		
+		string2 = BasicString<Int>(0xFF, size: 10)
+		
+		XCTAssertNotEqual(string1, string2)
+	}
 }
