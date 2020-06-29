@@ -17,3 +17,7 @@ Wrapper for character based sequences
 ### ==
 
 ## Functions
+
+### findFirstOccurence(character)
+### findFirstOccurence(sequence)
+
