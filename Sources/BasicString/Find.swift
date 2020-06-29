@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BasicString<T> where T: BinaryInteger {
+extension BasicString {
 	// MARK: - Find First Occurrences
 	
 	func findFirstIndexOf(character: T) -> Int? {

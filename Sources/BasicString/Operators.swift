@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BasicString<T> where T: BinaryInteger {
+extension BasicString {
 	
 	static func + (lhs: BasicString<T>, rhs: BasicString<T>) -> BasicString<T>  {
 		var newString = BasicString<T>(lhs.capacity + rhs.capacity)

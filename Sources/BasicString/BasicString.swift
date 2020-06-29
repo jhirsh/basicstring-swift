@@ -1,7 +1,7 @@
 // BasicString.swift
 
 struct BasicString<T> where T: BinaryInteger {
-	private var array: Array<T>
+	var array: Array<T>
 	var capacity: Int // TODO: restrict public access to get
 	var length: Int
 	
@@ -26,6 +26,12 @@ struct BasicString<T> where T: BinaryInteger {
 		for _ in 0..<size {
 			array.append(character)
 		}
+	}
+	
+	init(_ other: BasicString<T>) {
+		capacity = other.capacity
+		length = other.length
+		array = other.array
 	}
 	
 	subscript(index: Int) -> T {
